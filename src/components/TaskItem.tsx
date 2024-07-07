@@ -5,11 +5,20 @@ import styles from "./TaskItem.module.css";
 interface TaskItemProps {
   task: Task;
   onToggleComplete: (id: string) => void;
+  onRemoveTask: (id: string) => void;
 }
 
-const TaskItem: React.FC<TaskItemProps> = ({ task, onToggleComplete }) => {
+const TaskItem: React.FC<TaskItemProps> = ({
+  task,
+  onToggleComplete,
+  onRemoveTask,
+}) => {
   const handleToggle = () => {
     onToggleComplete(task.id);
+  };
+
+  const handleRemove = () => {
+    onRemoveTask(task.id);
   };
 
   return (
@@ -19,6 +28,9 @@ const TaskItem: React.FC<TaskItemProps> = ({ task, onToggleComplete }) => {
         {task.title}
       </span>
       <span className={styles.date}>{task.createdAt.toLocaleDateString()}</span>
+      <button onClick={handleRemove} className={styles.removeButton}>
+        Remove
+      </button>
     </div>
   );
 };

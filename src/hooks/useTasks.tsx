@@ -1,6 +1,7 @@
 import { useCallback } from "react";
 import { useTaskContext } from "../context/TaskContext";
 import { Task } from "../types/Task";
+import { getTaskPriority } from "../services/aiService";
 
 export const useTasks = () => {
   const { state, dispatch } = useTaskContext();
@@ -13,7 +14,6 @@ export const useTasks = () => {
         completed: false,
         createdAt: new Date(),
       };
-
       dispatch({ type: "ADD_TASK", payload: newTask });
     },
     [dispatch]

@@ -1,5 +1,6 @@
 import React, { useContext, createContext, useReducer, ReactNode } from "react";
 import { Task } from "../types/Task";
+import { getTaskPriority } from "../services/aiService";
 
 interface TaskState {
   tasks: Task[];
@@ -17,7 +18,12 @@ const initialState: TaskState = {
 const taskReducer = (state: TaskState, action: TaskAction) => {
   switch (action.type) {
     case "ADD_TASK":
-      return { ...state, tasks: [...state.tasks, action.payload] };
+      const newTask = {
+        ...action.payload,
+        priority: getTaskPriority(action.payload),
+      };
+      console.log("in dispatcher");
+      return { ...state, tasks: [...state.tasks, newTask] };
     case "TOGGLE_TASK":
       return {
         ...state,

@@ -1,0 +1,25 @@
+.editForm {
+  display: flex;
+  flex-direction: column;
+  max-width: 300px;
+  margin: 0 auto;
+}
+
+.input {
+  margin-bottom: 10px;
+  padding: 5px;
+  font-size: 16px;
+}
+
+.button {
+  padding: 5px 10px;
+  font-size: 16px;
+  background-color: #4caf50;
+  color: white;
+  border: none;
+  cursor: pointer;
+}
+
+.button:hover {
+  background-color: #45a049;
+}

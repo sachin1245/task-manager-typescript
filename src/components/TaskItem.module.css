@@ -1,17 +1,39 @@
 .taskItem {
-    display: flex;
-    align-items: center;
-    padding: 10px;
-    border-bottom: 1px solid #eee;
-  }
-  
-  .completed {
-    text-decoration: line-through;
-    color: #888;
-  }
-  
-  .date {
-    margin-left: auto;
-    font-size: 0.8em;
-    color: #888;
-  }
+  display: flex;
+  align-items: center;
+  padding: 10px;
+  border-bottom: 1px solid #eee;
+}
+
+.completed {
+  text-decoration: line-through;
+  color: #888;
+}
+
+.date {
+  margin-left: auto;
+  font-size: 0.8em;
+  color: #888;
+}
+
+.priority {
+  margin-left: 10px;
+  padding: 2px 5px;
+  border-radius: 3px;
+  font-size: 0.8em;
+}
+
+.priority[data-priority="High"] {
+  background-color: #ffcccb;
+  color: #d8000c;
+}
+
+.priority[data-priority="Medium"] {
+  background-color: #feefb3;
+  color: #9f6000;
+}
+
+.priority[data-priority="Low"] {
+  background-color: #d5edf8;
+  color: #205791;
+}

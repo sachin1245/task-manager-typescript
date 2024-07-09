@@ -1,16 +1,26 @@
-import React, { useState } from "react";
+import React, { Suspense, lazy } from "react";
+import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import styles from "./App.module.css";
 import { TaskProvider } from "./context/TaskContext";
-import TaskList from "./components/TaskList";
+
+const TaskList = lazy(() => import("./components/TaskList.backup"));
+const EditTask = lazy(() => import("./components/EditTask"));
 
 const App: React.FC = () => {
   return (
-    <TaskProvider>
-      <div className={styles.appContainer}>
-        <h1>AI-Powered Task Manager</h1>
-        <TaskList />
-      </div>
-    </TaskProvider>
+    <Router>
+      <TaskProvider>
+        <div className={styles.appContainer}>
+          <h1>AI-Powered Task Manager</h1>
+          <Suspense fallback={<>...loading</>}>
+            <Routes>
+              <Route path="/" element={<TaskList />}></Route>
+              <Route path="/edit/:id" element={<EditTask />}></Route>
+            </Routes>
+          </Suspense>
+        </div>
+      </TaskProvider>
+    </Router>
   );
 };
 
